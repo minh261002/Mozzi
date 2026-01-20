@@ -1,31 +1,21 @@
 <?php
 
+use App\Admin\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('dashboard');
-
-Route::get('/login', function () {
-    return view('auth.login');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('dashboard');
 });
 
-Route::post('/login', function () { 
-    return redirect()->route('dashboard');
-})->name('authenticate');
+Route::group(['prefix' => ''], function () {
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
 
-Route::get('/password/forgot', function () {
-    return view('auth.forgot-password');
-})->name('password.forgot');
+    Route::get('/password/forgot', [AuthController::class, 'forgotPassword'])->name('password.forgot');
+    Route::post('/password/forgot', [AuthController::class, 'sendResetLinkEmail'])->name('password.email');
 
-Route::post('/password/forgot', function () {
-    return redirect()->route('password.reset');
-})->name('password.email');
-
-Route::get('/password/reset/{token}', function () {
-    return view('auth.reset-password');
-})->name('password.reset');
-
-Route::post('/password/reset', function () {
-    return redirect()->route('dashboard');
-})->name('password.update');
+    Route::get('/password/reset/{token}', [AuthController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/password/reset', [AuthController::class, 'reset'])->name('password.update');
+});

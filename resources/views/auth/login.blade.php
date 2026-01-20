@@ -8,7 +8,10 @@
 
         <div class="mb-3">
             <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" required>
+            <input type="email" name="email" class="form-control" value="{{ old('email') }}" tabindex="1" required>
+            @error('email')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="mb-3">
@@ -20,7 +23,7 @@
             </label>
 
             <div class="input-group input-group-flat">
-                <input type="password" id="password" name="password" class="form-control" required>
+                <input type="password" id="password" name="password" class="form-control" tabindex="2" required>
 
                 <span class="input-group-text">
                     <a href="#" id="toggle-password" class="link-secondary">
@@ -29,16 +32,20 @@
                     </a>
                 </span>
             </div>
+
+            @error('password')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="mb-3">
             <label class="form-check">
                 <input type="checkbox" name="remember" class="form-check-input">
-                <span class="form-check-label">Ghi nhớ</span>
+                <span class="form-check-label">Lưu thông tin đăng nhập</span>
             </label>
         </div>
 
-        <button type="submit" id="login-button" class="btn btn-primary w-100">
+        <button type="submit" id="login-button" tabindex="3" class="btn btn-primary w-100">
             Đăng nhập
         </button>
     </form>
