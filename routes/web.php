@@ -6,8 +6,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::as('admin.')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    route::middleware('auth')->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    });
 });
 
 Route::group(['prefix' => ''], function () {

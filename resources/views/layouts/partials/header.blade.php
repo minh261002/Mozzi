@@ -39,7 +39,7 @@
                     <div class="d-none d-xl-block ps-2">
                         <div>{{ Auth::user()->name }}</div>
                         <div class="mt-1 small text-secondary">
-                            {{-- {{ Auth::user()->role[0]->title }} --}}
+                            {{ Auth::user()->role[0]->title }}
                         </div>
                     </div>
                 </a>

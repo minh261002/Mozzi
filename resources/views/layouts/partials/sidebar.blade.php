@@ -65,7 +65,7 @@
                             {{ $user->name }}
                         </div>
                         <div class="mt-1 small text-secondary">
-                            {{-- {{ $user->role[0]->title }} --}}
+                            {{ $user->role[0]->title }}
                         </div>
                     </div>
                 </a>

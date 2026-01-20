@@ -16,17 +16,18 @@ class RootSeeder extends Seeder
     public function run(): void
     {
         $root = Role::firstOrCreate(
-            ['name' => 'root'],
+            ['name' => 'administrator'],
             [
+                'title' => 'Administrator',
                 'guard_name' => 'web',
                 'is_system' => true,
             ]
         );
 
         $rootUser = User::firstOrCreate(
-            ['email' => 'root@gmail.com'],
+            ['email' => 'admin@gmail.com'],
             [
-                'name' => 'Root',
+                'name' => 'Administrator',
                 'password' => Hash::make('password'),
                 'email_verified_at' => now(),
                 'is_active' => true,

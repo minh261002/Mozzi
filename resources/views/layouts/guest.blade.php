@@ -20,7 +20,7 @@
         <div class="container container-tight py-4">
             <div class="text-center mb-4">
                 <a href="{{ route('admin.dashboard') }}" class="navbar-brand navbar-brand-autodark">
-                    <img src="{{ asset('assets/img/logo.svg') }}" alt="Logo" width="64" height="32">
+                    <img src="{{ asset('assets/img/logo.svg') }}" alt="Logo" width="153" height="96">
                 </a>
             </div>
             <div class="card card-md">
