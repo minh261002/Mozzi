@@ -13,8 +13,13 @@ return new class extends Migration
     {
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
-            
-        $table->softDeletes();
+            $table->string('name');
+            $table->string('address')->nullable();
+            $table->string('province', 10)->nullable();
+            $table->string('ward', 10)->nullable();
+            $table->foreignId('user_id')->nullable();
+            $table->foreignId('manager_id')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
