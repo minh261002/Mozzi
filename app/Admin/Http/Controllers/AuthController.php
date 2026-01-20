@@ -55,7 +55,7 @@ class AuthController
             ]);
 
             notyf()->success('Xin chào ' . Auth::user()->name);
-            return redirect()->intended(route('dashboard'));
+            return redirect()->intended(route('admin.dashboard'));
         }
 
         RateLimiter::hit($key, 60);
@@ -175,7 +175,7 @@ class AuthController
             RateLimiter::clear($key);
 
             notyf()->success('Đặt lại mật khẩu thành công. Tất cả phiên đăng nhập cũ đã bị đăng xuất.');
-            return redirect()->route('dashboard');
+            return redirect()->route('admin.dashboard');
         }
 
         RateLimiter::hit($key, 3600);

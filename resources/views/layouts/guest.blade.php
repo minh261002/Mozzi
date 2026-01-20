@@ -19,14 +19,14 @@
     <div class="page page-center">
         <div class="container container-tight py-4">
             <div class="text-center mb-4">
-                <a href="{{ route('dashboard') }}" class="navbar-brand navbar-brand-autodark">
+                <a href="{{ route('admin.dashboard') }}" class="navbar-brand navbar-brand-autodark">
                     <img src="{{ asset('assets/img/logo.svg') }}" alt="Logo" width="64" height="32">
                 </a>
             </div>
             <div class="card card-md">
                 <div class="card-body">
                     <h2 class="h2 text-center mb-4">@yield('title')</h2>
-                   @yield('content')
+                    @yield('content')
                 </div>
             </div>
         </div>
